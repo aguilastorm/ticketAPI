@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"github.com/aguilastorm/ticketAPI/handlers"
 )
 
 func TestGetTickets(t *testing.T) {
@@ -13,7 +14,7 @@ func TestGetTickets(t *testing.T) {
 	}
 
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(GetTickets)
+	handler := http.HandlerFunc(handlers.GetTickets)
 
 	handler.ServeHTTP(rr, req)
 
