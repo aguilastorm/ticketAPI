@@ -43,3 +43,15 @@ func GetTicket(id string) (*models.Ticket, error) {
 	}
 	return nil, fmt.Errorf("Ticket with ID %s not found", id)
 }
+
+// UpdateTicket actualiza un ticket existente.
+func UpdateTicket(updatedTicket models.Ticket) error {
+	for index, ticket := range Tickets {
+		if ticket.ID == updatedTicket.ID {
+			// Actualiza el ticket en la lista.
+			Tickets[index] = updatedTicket
+			return nil
+		}
+	}
+	return fmt.Errorf("Ticket with ID %s not found", updatedTicket.ID)
+}
