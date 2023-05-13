@@ -9,10 +9,11 @@ import (
 	"time"
 	"github.com/gorilla/mux"
 	"github.com/aguilastorm/ticketAPI/models"
+	"github.com/aguilastorm/ticketAPI/store"
 )
 
 func TestUpdateTicket(t *testing.T) {
-	tickets = append(tickets, models.Ticket{ID: "4", User: "Test User 4", CreationDate: time.Now(), UpdateDate: time.Now(), Status: "open"})
+	tickets = append(store.GeTtickets(), models.Ticket{ID: "4", User: "Test User 4", CreationDate: time.Now(), UpdateDate: time.Now(), Status: "open"})
 
 	newTicket := &models.Ticket{
 		ID:           "4",

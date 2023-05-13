@@ -7,10 +7,12 @@ import (
 	"time"
 	"github.com/gorilla/mux"
 	"github.com/aguilastorm/ticketAPI/models"
+	"github.com/aguilastorm/ticketAPI/store"
+	"github.com/aguilastorm/ticketAPI/handlers"
 )
 
 func TestGetTicket(t *testing.T) {
-	tickets = append(tickets, models.Ticket{ID: "1", User: "Test User", CreationDate: time.Now(), UpdateDate: time.Now(), Status: "open"})
+	tickets = append(store.GetTickets(), models.Ticket{ID: "1", User: "Test User", CreationDate: time.Now(), UpdateDate: time.Now(), Status: "open"})
 	req, err := http.NewRequest("GET", "/tickets/1", nil)
 	if err != nil {
 		t.Fatal(err)
@@ -19,7 +21,7 @@ func TestGetTicket(t *testing.T) {
 	rr := httptest.NewRecorder()
 
 	router := mux.NewRouter()
-	router.HandleFunc("/tickets/{id}", GetTicket)
+	router.HandleFunc("/tickets/{id}", handlers.GetTicket)
 	router.ServeHTTP(rr, req)
 
 	if status := rr.Code; status != http.StatusOK {
