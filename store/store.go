@@ -1,6 +1,9 @@
 package store
 
-import "github.com/aguilastorm/ticketAPI/models"
+import (
+	"github.com/aguilastorm/ticketAPI/models"
+	"fmt"
+)
 
 var Tickets []models.Ticket
 
@@ -17,4 +20,26 @@ func AddTicket(ticket models.Ticket) {
 // Limpia los tickets
 func ClearTickets() {
 	Tickets = []models.Ticket{}
+}
+
+// DeleteTicket elimina un ticket de la lista de tickets.
+func DeleteTicket(id string) error {
+	for index, ticket := range Tickets {
+		if ticket.ID == id {
+			// Elimina el ticket de la lista
+			Tickets = append(Tickets[:index], Tickets[index+1:]...)
+			return nil
+		}
+	}
+	return fmt.Errorf("Ticket with ID %s not found", id)
+}
+
+// GetTicket retorna un ticket específico por su ID.
+func GetTicket(id string) (*models.Ticket, error) {
+	for _, ticket := range Tickets {
+		if ticket.ID == id {
+			return &ticket, nil
+		}
+	}
+	return nil, fmt.Errorf("Ticket with ID %s not found", id)
 }
