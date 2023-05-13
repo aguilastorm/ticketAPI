@@ -8,6 +8,7 @@ import (
 	"testing"
 	"time"
 	"github.com/aguilastorm/ticketAPI/models"
+	"github.com/aguilastorm/ticketAPI/handlers"
 )
 
 func TestCreateTicket(t *testing.T) {
@@ -26,7 +27,7 @@ func TestCreateTicket(t *testing.T) {
 	}
 
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(CreateTicket)
+	handler := http.HandlerFunc(handlers.CreateTicket)
 	handler.ServeHTTP(rr, req)
 
 	if status := rr.Code; status != http.StatusOK {
