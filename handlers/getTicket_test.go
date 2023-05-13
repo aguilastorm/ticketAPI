@@ -12,7 +12,8 @@ import (
 )
 
 func TestGetTicket(t *testing.T) {
-	tickets = append(store.GetTickets(), models.Ticket{ID: "1", User: "Test User", CreationDate: time.Now(), UpdateDate: time.Now(), Status: "open"})
+	store.AddTicket(models.Ticket{ID: "1", User: "Test User", CreationDate: time.Now(), UpdateDate: time.Now(), Status: "open"})
+	t.Cleanup(func() { store.ClearTickets() }) 
 	req, err := http.NewRequest("GET", "/tickets/1", nil)
 	if err != nil {
 		t.Fatal(err)

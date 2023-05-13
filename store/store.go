@@ -13,3 +13,8 @@ func GetTickets() []models.Ticket {
 func AddTicket(ticket models.Ticket) {
 	Tickets = append(Tickets, ticket)
 }
+
+// Limpia los tickets
+func ClearTickets() {
+	Tickets = []models.Ticket{}
+}
