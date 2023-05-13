@@ -6,29 +6,26 @@ Este proyecto es una API REST en Go (Golang) para gestionar un sistema de ticket
 
 El proyecto se estructura de la siguiente manera:
 
-ticketAPI
-│   go.mod
-│   go.sum
-│   main.go
-├───handlers
-│   │   createTicket.go
-│   │   deleteTicket.go
-│   │   getTicket.go
-│   │   getTickets.go
-│   │   updateTicket.go
-│
-├───models
-│   │   ticket.go
-│
-├───store
-│   │   store.go
-│
-└───tests
-    │   createTicket_test.go
-    │   deleteTicket_test.go
-    │   getTicket_test.go
-    │   getTickets_test.go
-    │   updateTicket_test.go
+    .
+    ├── go.mod
+    ├── go.sum
+    ├── main.go
+    ├── handlers
+    │   ├── createTicket.go
+    │   ├── deleteTicket.go
+    │   ├── getTicket.go
+    │   ├── getTickets.go
+    │   └── updateTicket.go
+    ├── models
+    │   └── ticket.go
+    ├── store
+    │   └── store.go
+    └── tests
+        ├── createTicket_test.go
+        ├── deleteTicket_test.go
+        ├── getTicket_test.go
+        ├── getTickets_test.go
+        └── updateTicket_test.go
 
 
 Las carpetas son las siguientes:
