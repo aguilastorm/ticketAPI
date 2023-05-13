@@ -24,7 +24,8 @@ func UpdateTicket(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusNotFound)
 		return
 	}
-
+	
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(updatedTicket)
 }
 
